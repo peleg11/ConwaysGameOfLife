@@ -16,7 +16,7 @@ import pygame
 
 BoardX = 120
 BoardY = 90
-dead_color = (0, 0, 0)
+dead_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 live_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 
@@ -111,7 +111,9 @@ if __name__ == '__main__':
                     paused = True
                 if event.key == pygame.K_u:
                     paused = False
+                if event.key == pygame.K_c:
                     live_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+                    dead_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
                 if event.key == pygame.K_q:
                     pygame.quit()
                     sys.exit()
