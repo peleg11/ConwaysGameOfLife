@@ -14,8 +14,8 @@ from time import sleep
 
 import pygame
 
-BoardX = 120
-BoardY = 90
+BoardX = 30
+BoardY = 20
 dead_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 live_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
@@ -56,7 +56,7 @@ class GameBoard:
         self.board = {(x, y): Cell((x, y)) for x in range(BoardX) for y in range(BoardY)}
         for cell in self.board.values():
             pygame.draw.rect(surface, live_color,
-                             (cell.location[0] * 15, cell.location[1] * 15, 15 - 1, 15 - 1))
+                             (cell.location[0] * 8, cell.location[1] * 8, 8 - 1, 8 - 1))
 
     def computeNextState(self, cell):
         """
@@ -87,18 +87,18 @@ class GameBoard:
         for cell in self.board.values():
             if cell.nextState == 'live':
                 col = live_color
-                pygame.draw.rect(surface, col, (cell.location[0] * 15, cell.location[1] * 15, 15 - 1, 15 - 1))
+                pygame.draw.rect(surface, col, (cell.location[0] * 8, cell.location[1] * 8, 8 - 1, 8 - 1))
                 cell.state = cell.nextState
             else:
                 col = dead_color
-                pygame.draw.rect(surface, col, (cell.location[0] * 15, cell.location[1] * 15, 15 - 1, 15 - 1))
+                pygame.draw.rect(surface, col, (cell.location[0] * 8, cell.location[1] * 8, 8 - 1, 8 - 1))
                 cell.state = cell.nextState
 
 
 paused = False
 if __name__ == '__main__':
     pygame.init()
-    Surface = pygame.display.set_mode((120 * 8, 90 * 8))
+    Surface = pygame.display.set_mode((BoardX * 8, BoardY * 8))
     pygame.display.set_caption('THE GAME OF LIFE')
     game = GameBoard(Surface)
     while True:
@@ -121,5 +121,5 @@ if __name__ == '__main__':
             for cell in game.board.values():
                 game.computeNextState(cell)
             game.UpdateBoard(Surface)
-            sleep(0.1)
+            sleep(0.08)
             pygame.display.flip()
