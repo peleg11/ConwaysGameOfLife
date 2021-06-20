@@ -107,10 +107,8 @@ if __name__ == '__main__':
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_p:
-                    paused = True
-                if event.key == pygame.K_u:
-                    paused = False
+                if event.key == pygame.K_p:  # Pausing/Unpausing
+                    paused = not paused
                 if event.key == pygame.K_c:
                     live_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
                     dead_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))

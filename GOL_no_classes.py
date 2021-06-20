@@ -5,12 +5,10 @@ import pygame
 
 """
 this is a conways game of life implementation, no classes or dictionaries this time.
-p - Pause
-u - Unpause
+p - Pause/Unpause
 c - change colors
-q - quit 
+q - quit
 """
-
 BoardX = 120
 BoardY = 80
 dead_color = random.choice(
@@ -89,10 +87,8 @@ if __name__ == '__main__':
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_p:
-                    paused = True
-                if event.key == pygame.K_u:
-                    paused = False
+                if event.key == pygame.K_p:  # Pausing/Unpausing
+                    paused = not paused
                 if event.key == pygame.K_c:
                     dead_color = random.choice(
                         [(0, 100, 102), (6, 90, 96), (11, 82, 91), (20, 69, 82), (27, 58, 75), (33, 47, 69),
